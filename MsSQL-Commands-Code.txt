@@ -1,0 +1,60 @@
+//Creating the REP TABLE
+
+CREATE TABLE rep(
+
+rep_num int(2),
+last_name varchar(8),
+first_name varchar(8),
+street varchar(25),
+city varchar(10),
+state varchar(2),
+zip int(5),
+commission decimal(8,2),
+rate decimal(4,2),
+PRIMARY KEY (rep_num)
+
+);
+
+
+
+INSERT INTO rep VALUES(20, 'Kaiser','Valerie','624 Randall','Grove','FL',33321, 20542.50, 0.05);
+
+INSERT INTO rep VALUES(35, 'Hull','Richard','532 Jackson','Sheldon','FL',33553, 39216.00, 0.07);
+
+
+
+
+
+// Creating the ORDERS TABLE
+
+
+CREATE TABLE orders( order_num int(5), order_date varchar(10), customer_num int(3), PRIMARY KEY (order_num, customer_num));
+
+INSERT INTO orders VALUES(21608, '10/20/2010', 148);
+INSERT INTO orders VALUES(21610, '10/20/2010', 356);
+
+
+//Creating the CUSTOMER TABLE
+
+
+CREATE TABLE customer( customer_num int(3), customer_name varchar(30), street varchar(25), city varchar(10), state varchar(2), zip int(5), balance decimal(10,2), credit_limit decimal(10,2), rep_num int(2), PRIMARY KEY (customer_num, rep_num));
+
+INSERT INTO customer VALUES(148, "Al's Appliance and Sport", '2837 Greenway', 'Fillmore', 'FL', 33336, 6550.00, 7500.00, 20);
+INSERT INTO customer VALUES(282, 'Brookings Direct', '3827 Devon', 'Grove', 'FL', 33321, 431.50, 10000.00, 35);
+
+
+//Creating the ORDER_LINE TABLE
+
+
+CREATE TABLE order_line( order_num int(5), part_num varchar(4), num_ordered int(2), quoted_price decimal(10,2), PRIMARY KEY (order_num, part_num));
+
+INSERT INTO order_line VALUES(21608, 'AT94', 11, 21.95);
+INSERT INTO order_line VALUES(21610, 'DR93', 1, 495.00);
+
+
+//Creating the PART TABLE
+
+CREATE TABLE part( part_num varchar(5), description varchar(20), on_hand int(2), class varchar(2), warehouse int(1), price decimal(10,2), PRIMARY KEY (part_num));
+
+INSERT INTO part VALUES('AT94', 'Iron', 50,'HW', 3, 24.95);
+INSERT INTO part VALUES('BV06', 'Home Gym', 45,'SG', 2, 794.95);
